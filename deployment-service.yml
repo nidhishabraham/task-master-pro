@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: taskmasterpro
-        image: ari786/taskmasterpro:latest
+        image: nabraham/taskmasterpro:latest
         imagePullPolicy: Always
         resources:
           limits:

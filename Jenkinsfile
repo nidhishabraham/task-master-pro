@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git 'https://github.com/arifdevopstech/task-master-pro.git'
+                git 'https://github.com/nidhishabraham/task-master-pro.git'
             }
         }
         
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                      sh 'docker build -t ari786/taskmasterpro:latest .'
+                      sh 'docker build -t nabraham/taskmasterpro:latest .'
                     }
                 }
             }
@@ -63,7 +63,7 @@ pipeline {
         
         stage('Docker Image Scan') {
             steps {
-                sh 'trivy image --format table -o image-report.html ari786/taskmasterpro:latest'
+                sh 'trivy image --format table -o image-report.html nabraham/taskmasterpro:latest'
             }
         }
         
@@ -71,7 +71,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                      sh 'docker push ari786/taskmasterpro:latest'
+                      sh 'docker push nabraham/taskmasterpro:latest'
                     }
                 }
             }
